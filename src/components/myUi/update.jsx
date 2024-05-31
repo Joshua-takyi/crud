@@ -14,11 +14,16 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "sonner";
 import { useState } from "react";
-export function AddComponent() {
-	const [title, setTitle] = useState("");
-	const [description, setDescription] = useState("");
+export function UpdateComponent({
+	id,
+	defaultTitle,
+	defaultDescription,
+	defaultCategory,
+}) {
+	const [title, setTitle] = useState(defaultTitle);
+	const [description, setDescription] = useState(defaultDescription);
 	const [isImportant, setIsImportant] = useState(false);
-	const [category, setCategory] = useState("");
+	const [category, setCategory] = useState(defaultCategory);
 
 	const router = useRouter();
 	const categoryChange = (value) => {
@@ -31,32 +36,29 @@ export function AddComponent() {
 	};
 	const HandleSubmit = async (e) => {
 		e.preventDefault();
-		if (!title || !description || !category) {
-			toast.error("Please fill all the fields");
-			return;
-		}
 		try {
-			const res = await fetch("http://localhost:3000/api/items", {
-				cache: "no-store",
-				method: "POST",
+			const res = await fetch(`http://localhost:3000/api/items/${id}`, {
+				next: { revalidate: 0 },
+				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",
 				},
+
 				body: JSON.stringify({
 					title,
 					description,
 					category,
-					isImportant,
+					important: isImportant,
 				}),
 			});
 			if (!res) {
 				throw new Error(" an error occurred");
 			}
-			toast.success("Item added successfully");
+			toast.success("list updated successfully");
 			router.push("/");
 		} catch (error) {
 			console.log("an error occurred", error);
-			return [];
+			toast.error(error.message);
 		}
 	};
 	return (
@@ -108,7 +110,7 @@ export function AddComponent() {
 					</label>
 				</div>
 			</div>
-			<Button type="submit">Add</Button>
+			<Button type="submit">Update</Button>
 			<Toaster richColors position="top-center" />
 		</form>
 	);

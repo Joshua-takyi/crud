@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SheetTrigger, SheetContent, Sheet } from "@/components/ui/sheet";
-
 export default function SideBarComponent() {
 	return (
-		<div className="flex lg:h-screen sticky top-0 z-50 shadow-md ">
+		<div className="flex lg:h-screen sticky top-0 z-50 shadow-md">
 			<div className="hidden lg:block lg:w-64 lg:shrink-0  bg-[#836FFF]  ">
 				<div className="flex h-full flex-col justify-between  p-3  py-2">
 					<div className="space-y-6 p-2">
@@ -15,18 +14,18 @@ export default function SideBarComponent() {
 						<nav className="space-y-1">
 							<Link
 								className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-50"
-								href="#"
+								href="/"
 							>
 								<HomeIcon className="h-5 w-5" />
 								Home
 							</Link>
-							<Link
+							{/* <Link
 								className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-50"
 								href="#"
 							>
 								<LayoutDashboardIcon className="h-5 w-5" />
 								Dashboard
-							</Link>
+							</Link> */}
 							<Link
 								className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-50"
 								href="/add"
@@ -67,18 +66,18 @@ export default function SideBarComponent() {
 									<nav className="space-y-1">
 										<Link
 											className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-50"
-											href="#"
+											href="/"
 										>
 											<HomeIcon className="h-5 w-5" />
 											Home
 										</Link>
-										<Link
+										{/* <Link
 											className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-50"
 											href="#"
 										>
 											<LayoutDashboardIcon className="h-5 w-5" />
 											Dashboard
-										</Link>
+										</Link> */}
 										<Link
 											className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-50"
 											href="/add"
